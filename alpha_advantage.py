@@ -47,7 +47,6 @@ async def main():
 
     for d in data:
         cur.executemany("INSERT OR IGNORE INTO stocks VALUES (?, ?, ?)", d)
-    await browser.close()
     con.commit()
     con.close()
 
