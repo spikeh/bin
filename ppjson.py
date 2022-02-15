@@ -36,7 +36,8 @@ def get_for_isin(isin, date):
         "data": [],
     }
     for row in query_db(
-        "SELECT * FROM stocks WHERE isin = ? AND date <= ?", (isin, date)
+        "SELECT * FROM stocks WHERE isin = ? AND date <= ? ORDER BY date DESC LIMIT 100",
+        (isin, date),
     ):
         ret["data"].append([row["date"], row["price"]])
     return ret
